@@ -2,7 +2,7 @@
 
 var jwt = require('jwt-simple');
 var moment = require('moment');
-var secret = 'clave_secreta'
+var secret = 'clave_secreta';
 
 exports.ensureAuth = function(req, res, next){
     if(!req.headers.authorization){
@@ -18,7 +18,7 @@ exports.ensureAuth = function(req, res, next){
             return res.status(401).send({ message: 'El token ha expirado' });
         }
     }catch(ex){
-        console.log(ex);
+        // console.log(ex);
         return res.status(403).send({ message: 'Token no valido' });
     }
 
