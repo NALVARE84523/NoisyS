@@ -31,6 +31,13 @@ export class UserService{
         let headers = new Headers({'Content-Type':'application/json'})
         return this._http.post(this.url+'register', params, {headers: headers}).map(res => res.json());
     }
+    updateUser(user_to_update){
+        let params = JSON.stringify(user_to_update);        
+        let headers = new Headers({'Content-Type':'application/json',
+    'authorization': this.getToken(),
+    })
+        return this._http.post(this.url+'update_user/' + user_to_update._id, params, {headers: headers}).map(res => res.json());
+    }
     getIdentity(){
         let identity = JSON.parse(localStorage.getItem('identity'));
         if(identity != "undefined"){

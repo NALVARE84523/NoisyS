@@ -4,6 +4,7 @@ var path = require('path')
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 var jwt = require('../services/jwt');
+const user = require('../models/user');
 
 function pruebas(req, res){
     res.status(200).send({
@@ -91,6 +92,9 @@ function loginUser(req, res){
 function updateUser(req, res){
     var userId = req.params.id;
     var update = req.body;
+    if(userId != req.user.sub){
+       return res.status(500).send({ message: 'No tienes permiso para modificar el usuario' });
+    }
 
     User.findByIdAndUpdate(userId, update, (err, userUpdated) =>{
         if(err){
