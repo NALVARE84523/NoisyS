@@ -1,0 +1,132 @@
+<!--==navbar==-->
+<div *ngIf="identity" class="navigation col-lg-1">
+<h1 class="head-title">
+  <a  [routerlink]= "['/']">
+    {{title}}
+  </a>  
+</h1>
+<nav class="navigation">
+  <a href="#">
+    <span class="glyphicon-search" aria-hidden="true"></span>
+    Buscar
+  </a>
+  <a [routerLink]="['/artists', 1]" [routerLinkActivate]=['activated']>
+    <span class="glyphicon-star" aria-hidden="true"></span>
+    Artistas
+  </a>
+  <a href="#">
+    <span class="glyphicon-book" aria-hidden="true"></span>
+    Albums
+  </a>
+    
+</nav>
+<nav id="user_logged">
+  <div class="user-image">
+    <img src="{{url + 'get-image-user/' + identity.image}}">
+  </div>
+  <span id="identity_name">
+    {{identity.name}}
+  </span>
+    
+  <a [routerLink]="['/mis-datos']" [routerLinkActivate]=['activated']>
+    <span class="glyphicon-cog" aria-hidden="true"></span>
+    Mis datos
+  </a>
+  <a  (click)="logout()" class="btn-logout">
+    <span class="glyphicon-log-out" aria-hidden="true"></span>
+    Cerrar sesion
+  </a>
+</nav>
+</div>
+
+<!--==paginas==-->
+
+<div [class-hidden]="!identity" class="central col-lg-11">
+  <router-outlet></router-outlet>
+</div>
+
+<!--==login y registro==-->
+<div class="col-lg-12 row justify-content"><!--*ngIf="!identity"-->
+<!--==login==-->
+  <div class="col-lg-6">
+      <div class="row justify-content-center mx-0">
+        <div class="login-box ">
+          <div class="row justify-content-center mb-2">
+            <img class="avatar mt-n5" src="../assets/images/logo1.png" alt="logo Noisy">
+          </div>
+          <h1>Iniciar sesion</h1>
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="group">
+              <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" required>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>correo</label>
+            </div>
+  
+            <div class="group">
+              <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" required>
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Contraseña</label>
+            </div>
+  
+            <input type="submit" value="Ingresar">
+          </form>
+  
+        </div>
+      </div>
+  </div>
+            
+  <!--==registro==-->
+  <div class="col-lg-6">
+    <div class="row justify-content-center mx-0">
+      <div class="login-box borde">
+        <div class="row justify-content-center mb-2">
+          <img class="avatar mt-n5" src="../assets/images/logo1.png" alt="logo Noisy">
+        </div>
+        <h2 class="text-center">Registrate para grabar y escuchar los mejores podcast</h2><br>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()"> 
+            
+          <div class="group">
+            <input type="text" #name="ngModel" name="name" [(ngModel)]="user_register.name" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Nombre</label>
+          </div>
+  
+          <div class="group">
+            <input type="text" #surname="ngModel" name="surname" [(ngModel)]="user_register.surname" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Apellido</label>
+          </div>
+
+          <div class="group">
+            <input type="email" #email="ngModel" name="email" [(ngModel)]="user_register.email"required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Correo electronico</label>
+          </div>
+  
+          <div class="group">
+            <input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Contraseña</label>
+          </div>
+  
+          <input type="submit" value="Registrarte" style="font-family: monospace;">
+          <br>
+          <p>Al registrarte, aceptas nuestras <a href="#">Condiciones</a>, la <a href="#">Politica de datos</a> y la <a
+              href="#"> Politica de cookies</a></p>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+  
+  </div>
+  
+
+
+

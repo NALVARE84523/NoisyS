@@ -1,0 +1,29 @@
+<div class="col-lg-6">
+    <h1>{{titulo}}</h1>
+
+<form #formArtist="ngForm" (ngSubmit)="onSubmit()">
+    <p>
+        <label>Nombre</label>
+        <input type="text" #name="ngModel" name="name" [(ngModel)]="artist.name" required>
+    </p>
+    <p>
+        <label>Descripcion</label>
+        <textarea  #description="ngModel" name="description" [(ngModel)]="artist.description" required></textarea>
+
+
+<div *ngIf="is_edit">
+    <div class="image_for_edit" *ngIf="artist.image !='null'">
+        <img src="{{url + 'get-image-artist/' + artist.image }}">
+    </div>
+<p>
+    <label> Sube la imagen del artista</label>
+    <input type="file" placeholder= "subirimagen...." (change)="fileChangeEvent($event)">
+</p>
+    
+</div>
+
+    </p>
+    <input type="submit" value="{{titulo}}" [diseable]="!formArtist.form.valid" style="font-family: monospace;">
+     <br>
+</form>
+</div>  

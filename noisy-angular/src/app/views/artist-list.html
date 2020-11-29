@@ -1,0 +1,7 @@
+<div class="col-lg-6" *ngIf="identity">
+
+  <h1>{{titulo}}</h1>
+  <a [routerLink]="['/create-artists']" *ngIf="identity && identity.role == 'ROLE_ADMIN'"  class="btn btn-warning">    
+      Añadir artista
+  </a>
+</div>
