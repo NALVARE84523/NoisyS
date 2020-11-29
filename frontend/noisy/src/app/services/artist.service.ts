@@ -26,16 +26,7 @@ import { Artist } from '../models/artist';
         return this._http.post(this.url+'artist', params, {headers: headers}).map(res => res.json());
     }
     
-
-    getArtists(token: any, page: string){
-        let headers = new Headers({
-            'Content-Type' : 'application/json',
-            'Authorization' : token
-        });
-        let options = requestOptions ({headers: headers}),
-        return this._http.get(this.url+'artists/'+page,options).map(res=> res.json());
-
-    };
+    
 
     getArtist(token: any, id: string){
         let headers = new Headers({
