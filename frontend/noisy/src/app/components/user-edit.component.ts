@@ -3,7 +3,7 @@ import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import { GLOBAL } from '../services/global'
 
-}
+
 
 @Component({
     selector: 'user-edit',

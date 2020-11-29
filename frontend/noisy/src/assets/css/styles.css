@@ -4,7 +4,10 @@ html, body {
     background: #eee;
 }
 
-
+.activated{
+    border-bottom: 4px solid gold;
+    padding-bottom: 4px;
+}
 .head-title{
     font-size: 20px;
     font-weight: bold;

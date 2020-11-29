@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { GLOBAL } from '../app/services/global';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,8 @@ export class AppComponent  implements OnInit{
  public url: string;
  
  constructor(
+   private _route: ActivatedRoute,
+   private _router: Router,
    private _userService: UserService
  ){
    this.user = new User('','','','','','ROLE_USER', '');
@@ -73,6 +76,7 @@ logout(){
   localStorage.clear();
   this.identity = null;
   this.token = null;
+  this._router.navigate(['/'])
 }
 
 
